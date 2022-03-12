@@ -247,6 +247,14 @@ namespace Plugin.FirebasePushNotification
 
             Messaging.SharedInstance.Delegate = CrossFirebasePushNotification.Current as IMessagingDelegate;
 
+            //Checks whether or not FcmToken was recived. 
+            //Change hasToken status
+            var token = Messaging.SharedInstance.FcmToken ?? "";
+            
+            Console.WriteLine($"FCM token: {token}");
+            
+            if (!string.IsNullOrEmpty(token))
+                hasToken = true;
             //Messaging.SharedInstance.ShouldEstablishDirectChannel = true;
 
             // Register your app for remote notifications.
